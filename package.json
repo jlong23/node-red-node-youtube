@@ -1,0 +1,29 @@
+{
+  "name": "node-red-node-youtube",
+  "version": "0.0.1",
+  "description": "A Node-RED node to access Youtube API.",
+  "dependencies": {
+    "youtube-api": "0.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlong23/node-red-node-youtube/tree/master"
+  },
+  "license": "GNU-v2.0",
+  "keywords": [
+    "node-red",
+    "youtube"
+  ],
+  "node-red": {
+    "nodes": {
+      "YouTube-API": "youtube.js"
+    }
+  },
+  "contributors": [
+    {
+      "name": "Jay Long"
+    }
+  ],
+  "readme": "node-red-node-youtube\n====================\n\n",
+  "readmeFilename": "README.md"  
+}

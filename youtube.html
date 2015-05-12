@@ -1,0 +1,66 @@
+<script type="text/x-red" data-template-name="google-config">
+    <div class="form-row">
+        <label for="node-config-input-apikey"><i class="fa fa-bookmark"></i>API Key</label>
+        <input class="input-append-left" type="text" id="node-config-input-apikey" style="width: 40%;" >
+    </div>
+</script>
+
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('google-config',{
+        category: 'config',
+        defaults: { },
+        credentials: {
+            apikey: {type:"password",required:true},
+        },
+        label: function() {
+            return "GoogleAPI";
+        },
+        exportable: false,
+    });
+})();
+</script>
+
+
+<script type="text/x-red" data-template-name="YouTube PlayList-List">
+    <div class="form-row">
+        <label for="node-input-apikey"><i class="fa fa-user"></i> APIKey</label>
+        <input type="text" id="node-input-apikey">
+    </div>
+    <div class="form-row">
+        <label for="node-input-part"><i class="fa fa-folder"></i> part</label>
+        <input type="text" id="node-input-part" placeholder="snippet">
+    </div>
+    <div class="form-row node-input-playlistid">
+         <label for="node-input-playlistid"><i class="fa fa-file"></i> Playlist ID</label>
+         <input type="text" id="node-input-playlistid" placeholder="playlistid">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="YouTube PlayList-List">
+    <p>Lists the content of the selected playlist.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('YouTube PlayList-List',{
+        category: 'social',
+        color:"#C0DEED",
+        defaults: {
+            apikey: {type:"google-config",required:true},
+            part: {required:true},
+            playlistid: {value:""},
+            name: {value:""},
+        },
+        inputs:0,
+        outputs:1,
+        icon: "youtube.png",
+        label: function() {
+            return this.name ? "YT "+this.name : "YouTube PlayList-List";
+            return "YouTube PlayList-List";
+        }
+    });
+</script>
