@@ -7,9 +7,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jlong23/node-red-node-youtube/tree/master"
+    "url": "https://github.com/node-red/node-red-nodes/tree/master/social/youtube"
   },
-  "license": "GNU-v2.0",
+  "license": "Apache-v2.0",
   "keywords": [
     "node-red",
     "youtube"
