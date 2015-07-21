@@ -1,6 +1,6 @@
 {
   "name": "node-red-node-youtube",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Node-RED node to access Youtube Data API.",
   "dependencies": {
     "youtube-api": "0.3.2"
