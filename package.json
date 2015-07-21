@@ -1,29 +1,32 @@
 {
   "name": "node-red-node-youtube",
-  "version": "0.0.2",
-  "description": "A Node-RED node to access Youtube API.",
+  "version": "0.0.3",
+  "description": "A Node-RED node to access Youtube Data API.",
   "dependencies": {
     "youtube-api": "0.3.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/node-red/node-red-nodes/tree/master/social/youtube"
+    "url": "https://github.com/jlong23/node-red-node-youtube"
   },
   "license": "Apache-v2.0",
   "keywords": [
     "node-red",
-    "youtube"
+    "youtube",
+    "videos",
+    "playlists",
+    "Google Data API"
   ],
   "node-red": {
     "nodes": {
       "YouTube-API": "youtube.js"
     }
   },
-  "contributors": [
-    {
-      "name": "Jay Long"
-    }
-  ],
-  "readme": "node-red-node-youtube\n====================\n\n\n\n<a href=\"http://nodered.org\" target=\"_new\">Node-RED</a> node that manipulates Youtube Data API.\n\nInstall\n-------\n\nRun the following command in the root directory of your Node-RED install\n\n        npm install node-red-node-youtube\n\nUsage\n-----\n\nContains 3 Nodes that may be used together:\n\n Channels List - List a user's channels\nPlaylist List - List a Channel Playlist(s)\nPlaylistItems List - List the Videos in a Playlist\n\nYou will need a Google API Key in order to make use of the Nodes, see <a href=\"https://developers.google.com/youtube/registering_an_application#Create_API_Keys\">Creating API keys</a> /n/n",
+  "author": {
+    "name": "Jay Long",
+    "email": "jlong@rabbitearsvideoproduction.com",
+    "url": "http://www.rabbitearsvideoproduction.com"
+  },
+  "readme": "node-red-node-youtube\n====================\n\n\n\n<a href=\"http://nodered.org\" target=\"_new\">Node-RED</a> node that manipulates Youtube Data API.\n\nInstall\n-------\n\nRun the following command in the root directory of your Node-RED install\n\n        npm install node-red-node-youtube\n\nUsage\n-----\n\nContains 3 Nodes that may be used together:\n\n Channels List - List a user's channels\nPlaylist List - List a Channel Playlist(s)\nPlaylistItems List - List the Videos in a Playlist\n\nYou will need a Google API Key in order to make use of the Nodes, see <a href=\"https://developers.google.com/youtube/registering_an_application#Create_API_Keys\">Creating API keys</a>.\n\n",
   "readmeFilename": "README.md"  
 }
