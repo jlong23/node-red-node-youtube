@@ -1,0 +1,288 @@
+<script type="text/x-red" data-template-name="google-config">
+    <div class="form-row">
+        <label for="node-config-input-apikey"><i class="fa fa-bookmark"></i>API Key</label>
+        <input class="input-append-left" type="text" id="node-config-input-apikey" style="width: 40%;" >
+    </div>
+</script>
+
+<script type="text/javascript">
+(function() {
+    RED.nodes.registerType('google-config',{
+        category: 'config',
+        defaults: { },
+        credentials: {
+            apikey: {required:true}
+        },
+        label: function() {
+            return "Google API Key";
+        },
+        exportable: false,
+    });
+})();
+</script>
+
+
+<script type="text/x-red" data-template-name="YouTube PlayListItems">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-user"></i> APIKey</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row node-input-part">
+        <label for="node-input-part"><i class="fa fa-list-ul"></i> part</label>
+        <select id="node-input-part" style="width:125px !important">
+          <option value="snippet">snippet</option>
+          <option value="contentDetails">contentDetails</option>
+          <option value="id">id</option>
+          <option value="status">status</option>
+        </select>
+    </div>
+    <div class="form-row node-input-playlistId">
+         <label for="node-input-playlistId"><i class="fa fa-tag"></i> playlistId</label>
+         <input type="text" id="node-input-playlistId" placeholder="playlistId">
+    </div>
+    <div class="form-row node-input-playlistItemIds">
+         <label for="node-input-playlistItemIds"><i class="fa fa-file"></i> id</label>
+         <input type="text" id="node-input-playlistItemIds" placeholder="playlist item id1, playlist item id2, ...">
+    </div>
+    <div class="form-row node-input-maxResults">
+         <label for="node-input-maxResults"><i class="fa fa-tag"></i> maxResults</label>
+         <input type="text" id="node-input-maxResults" placeholder="maxResults (1-50)">
+    </div>
+    <div class="form-row node-input-onBehalfOfContentOwner">
+         <label for="node-input-onBehalfOfContentOwner"><i class="fa fa-tag"></i> onBehalfOfContentOwner</label>
+         <input type="text" id="node-input-onBehalfOfContentOwner" placeholder="onBehalfOfContentOwner">
+    </div>
+    <div class="form-row node-input-videoId">
+         <label for="node-input-videoId"><i class="fa fa-tag"></i> videoId</label>
+         <input type="text" id="node-input-videoId" placeholder="videoId">
+    </div>
+    <div class="form-row node-input-pageToken">
+         <label for="node-input-pageToken"><i class="fa fa-tag"></i> pageToken</label>
+         <input type="text" id="node-input-pageToken" placeholder="pageToken">
+    </div>
+    <div class="form-row node-input-fields">
+         <label for="node-input-fields"><i class="fa fa-tag"></i> fields</label>
+         <input type="text" id="node-input-fields" placeholder="fields">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="YouTube PlayListItems">
+    <p>Returns a collection of playlist items that match the API request parameters. You can retrieve all of the playlist items in a specified playlist or retrieve one or more playlist items by their unique IDs.</p>
+    <p>See <a href="https://developers.google.com/youtube/v3/docs/playlistItems/list">Youtube Data API PlaylistItems List</a></p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('YouTube PlayListItems',{
+        category: 'social',
+        color:"#C0DEED",
+        defaults: {
+        	config: {type:"google-config",required:true},
+            part: {value: "snippet",required:true},
+            playlistId: {value: ""},
+            playlistItemIds: {value: ""},
+            maxResults: {value:5},
+            onBehalfOfContentOwner: {value: ""},
+            pageToken: {value: ""},
+            videoId: {value: "" },
+            fields: {value: "" },
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "youtube.png",
+        label: function() {
+            return this.name ? "YT "+this.name : "PlayListItems";
+        }
+    });
+</script>
+
+
+<script type="text/x-red" data-template-name="YouTube PlayLists">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-user"></i> APIKey</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row node-input-part">
+        <label for="node-input-part"><i class="fa fa-list-ul"></i> part</label>
+        <select id="node-input-part" style="width:125px !important">
+          <option value="snippet">snippet</option>
+          <option value="contentDetails">contentDetails</option>
+          <option value="id">id</option>
+          <option value="player">player</option>
+          <option value="status">status</option>
+        </select>
+    </div>
+    <div class="form-row node-input-channelId">
+         <label for="node-input-channelId"><i class="fa fa-tag"></i> channelId</label>
+         <input type="text" id="node-input-channelId" placeholder="channelId">
+    </div>
+    <div class="form-row node-input-playlistId">
+         <label for="node-input-playlistId"><i class="fa fa-tag"></i> id</label>
+         <input type="text" id="node-input-playlistId" placeholder="Playlist id">
+    </div>
+    <div class="form-row node-input-mine">
+         <label for="node-input-mine"><i class="fa fa-tag"></i> mine</label>
+         <select id="node-input-mine" style="width:125px !important">
+          <option value="">false</option>
+          <option value="true">true</option>
+         </select>
+    </div>
+    <div class="form-row node-input-maxResults">
+         <label for="node-input-maxResults"><i class="fa fa-tag"></i> maxResults</label>
+         <input type="text" id="node-input-maxResults" placeholder="maxResults (1-50)">
+    </div>
+    <div class="form-row node-input-onBehalfOfContentOwner">
+         <label for="node-input-onBehalfOfContentOwner"><i class="fa fa-tag"></i> onBehalfOfContentOwner</label>
+         <input type="text" id="node-input-onBehalfOfContentOwner" placeholder="onBehalfOfContentOwner">
+    </div>
+    <div class="form-row node-input-onBehalfOfContentOwnerChannel">
+         <label for="node-input-onBehalfOfContentOwnerChannel"><i class="fa fa-tag"></i> onBehalfOfContentOwnerChannel</label>
+         <input type="text" id="node-input-onBehalfOfContentOwnerChannel" placeholder="onBehalfOfContentOwnerChannel">
+    </div>
+    <div class="form-row node-input-pageToken">
+         <label for="node-input-pageToken"><i class="fa fa-tag"></i> pageToken</label>
+         <input type="text" id="node-input-pageToken" placeholder="pageToken">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="YouTube PlayLists">
+    <p>Returns a collection of playlists that match the API request parameters. For example, you can retrieve all playlists that the authenticated user owns, or you can retrieve one or more playlists by their unique IDs.</p>
+    <p>See <a href="https://developers.google.com/youtube/v3/docs/playlists/list">Youtube Data API Playlists List</a></p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('YouTube PlayLists',{
+        category: 'social',
+        color:"#C0DEED",
+        defaults: {
+        	config: {type:"google-config", required: true},
+            part: {value: "snippet", required: true},
+            channelId: {value: ""},
+            playlistId: {value: ""},
+            mine: {value: ""},
+            maxResults: {value:5},
+            onBehalfOfContentOwner: {value: ""},
+            onBehalfOfContentOwnerChannel: {value: ""},
+            pageToken: {value: ""},
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "youtube.png",
+        label: function() {
+            return this.name ? "YT "+this.name : "PlayLists";
+        }
+    });
+</script>
+
+
+<script type="text/x-red" data-template-name="YouTube Channels">
+    <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-user"></i> APIKey</label>
+        <input type="text" id="node-input-config">
+    </div>
+    <div class="form-row node-input-part">
+        <label for="node-input-part"><i class="fa fa-list-ul"></i> part</label>
+        <select id="node-input-part" style="width:125px !important">
+          <option value="snippet">snippet</option>
+          <option value="auditDetails">auditDetails</option>
+          <option value="brandingSettings">brandingSettings</option>
+          <option value="contentDetails">contentDetails</option>
+          <option value="contentOwnerDetails">contentOwnerDetails</option>
+          <option value="id">id</option>
+          <option value="invideoPromotion">invideoPromotion</option>
+          <option value="statistics">statistics</option>
+          <option value="status">status</option>
+          <option value="topicDetails">topicDetails</option>
+        </select>
+    </div>
+    <div class="form-row node-input-categoryId">
+         <label for="node-input-categoryId"><i class="fa fa-tag"></i> categoryId</label>
+         <input type="text" id="node-input-categoryId" placeholder="categoryId">
+    </div>
+    <div class="form-row node-input-forUsername">
+         <label for="node-input-forUsername"><i class="fa fa-tag"></i> forUsername</label>
+         <input type="text" id="node-input-forUsername" placeholder="forUsername">
+    </div>
+    <div class="form-row node-input-channelIds">
+         <label for="node-input-channelIds"><i class="fa fa-tag"></i> channelIds</label>
+         <input type="text" id="node-input-channelIds" placeholder="channelId, channelId, ...">
+    </div>
+    <div class="form-row node-input-managedByMe">
+         <label for="node-input-managedByMe"><i class="fa fa-tag"></i> managedByMe</label>
+         <select id="node-input-managedByMe" style="width:125px !important">
+          <option value="">false</option>
+          <option value="true">true</option>
+         </select>
+    </div>
+    <div class="form-row node-input-mine">
+         <label for="node-input-mine"><i class="fa fa-tag"></i> mine</label>
+         <select id="node-input-mine" style="width:125px !important">
+          <option value="">false</option>
+          <option value="true">true</option>
+         </select>
+    </div>
+    <div class="form-row node-input-mySubscribers">
+         <label for="node-input-mySubscribers"><i class="fa fa-tag"></i> mySubscribers</label>
+         <select id="node-input-mySubscribers" style="width:125px !important">
+          <option value="">false</option>
+          <option value="true">true</option>
+         </select>
+    </div>
+    <div class="form-row node-input-maxResults">
+         <label for="node-input-maxResults"><i class="fa fa-tag"></i> maxResults</label>
+         <input type="text" id="node-input-maxResults" placeholder="maxResults (1-50)">
+    </div>
+    <div class="form-row node-input-onBehalfOfContentOwner">
+         <label for="node-input-onBehalfOfContentOwner"><i class="fa fa-tag"></i> onBehalfOfContentOwner</label>
+         <input type="text" id="node-input-onBehalfOfContentOwner" placeholder="onBehalfOfContentOwner">
+    </div>
+    <div class="form-row node-input-pageToken">
+         <label for="node-input-pageToken"><i class="fa fa-tag"></i> pageToken</label>
+         <input type="text" id="node-input-pageToken" placeholder="pageToken">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="YouTube Channels">
+    <p>Returns a collection of zero or more channel resources that match the request criteria.</p>
+    <p>See <a href="https://developers.google.com/youtube/v3/docs/channels/list">Youtube Data API Channels List</a></p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('YouTube Channels',{
+        category: 'social',
+        color:"#C0DEED",
+        defaults: {
+        	config: {type:"google-config",required:true},
+            part: {value: "snippet",required:true},
+            categoryId: {value: ""},
+            forUsername: {value: ""},
+            channelIds: {value: ""},
+            managedByMe: {value: ""},
+            mine: {value: ""},
+            mySubscribers: {value: ""},
+            maxResults: {value:5},
+            onBehalfOfContentOwner: {value: ""},
+            pageToken: {value: ""},
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "youtube.png",
+        label: function() {
+            return this.name ? "YT "+this.name : "Channels";
+        }
+    });
+</script>
