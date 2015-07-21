@@ -7,7 +7,7 @@ Node-RED node that manipulates Youtube Data API.
 Install
 -------
 
-Run the following command in the root directory of your Node-RED install\n
+Run the following command in the root directory of your Node-RED install
 
         npm install node-red-node-youtube
 
